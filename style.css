@@ -1,0 +1,174 @@
+/* =====================================================================
+   MODELO INICIAL — Meu Site (3 páginas)
+   Este CSS é COMPARTILHADO pelas 3 páginas (index, sobre, contato).
+   O visual abaixo é só um ponto de partida: mude cores, fontes, tamanhos
+   e layout para deixar com a SUA cara. 💪
+   ===================================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  color-scheme: light;
+  --cor-fundo: #f4f1e8;
+  --cor-texto: #20312b;
+  --cor-verde: #173c35;
+  --cor-verde-claro: #367c69;
+  --cor-destaque: #c96f4a;
+  --cor-cartao: #fffdf7;
+  --cor-borda: #e3ded1;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+.atalho {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  padding: 0.6rem 0.9rem;
+  transform: translateY(-150%);
+  background: var(--cor-cartao);
+  color: var(--cor-verde);
+  border-radius: 8px;
+}
+.atalho:focus { transform: translateY(0); }
+
+/* ---------- MENU (topo) ---------- */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--cor-verde);
+  padding: 1rem 1.5rem;
+}
+.logo { color: #f2b880; font-weight: 800; font-size: 1.2rem; }
+.menu { display: flex; gap: 1rem; }
+.menu a {
+  color: #f5f3ec;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.menu a:hover,
+.menu a:focus-visible {
+  background: #28594f;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+.menu a.ativo { background: var(--cor-destaque); color: #fff; }
+
+/* ---------- CONTEÚDO ---------- */
+main { max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem; }
+
+.hero {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: linear-gradient(135deg, var(--cor-verde), var(--cor-verde-claro));
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 14px 32px rgba(23, 60, 53, 0.16);
+}
+.hero h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 0.6rem; }
+.hero p { max-width: 520px; margin: 0 auto 1.2rem; opacity: 0.95; }
+
+.botao {
+  display: inline-block;
+  background: #fffdf7;
+  color: var(--cor-verde);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+.botao:hover { transform: translateY(-2px); background: #f2b880; }
+
+/* Cards (exemplo com flexbox — tente trocar por grid!) */
+.cards {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.card {
+  flex: 1 1 220px;
+  background: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  padding: 1.3rem;
+  box-shadow: 0 6px 18px rgba(32, 49, 43, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(32, 49, 43, 0.1);
+}
+.card h2 { margin-bottom: 0.4rem; font-size: 1.1rem; }
+
+.conteudo { background: var(--cor-cartao); border: 1px solid var(--cor-borda); border-radius: 16px; padding: 1.6rem; }
+.conteudo h1 { margin-bottom: 0.6rem; }
+.conteudo h2 { margin: 1rem 0 0.4rem; }
+.conteudo ul { margin-left: 1.2rem; }
+
+/* ---------- FORMULÁRIO ---------- */
+.form { margin-top: 1rem; }
+.campo { margin-bottom: 1rem; }
+.campo label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+.campo input, .campo textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1.5px solid #8c998d;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--cor-texto);
+  background: var(--cor-cartao);
+}
+.campo input:focus, .campo textarea:focus {
+  outline: 3px solid rgba(54, 124, 105, 0.3);
+  outline-offset: 2px;
+  border-color: var(--cor-verde-claro);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 3px;
+}
+
+/* ---------- RODAPÉ ---------- */
+.rodape {
+  text-align: center;
+  padding: 1.5rem;
+  color: #607068;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* ---------- RESPONSIVO (exemplo de media query) ---------- */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.5rem; }
+  .menu { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .menu a:hover,
+  .menu a:focus-visible {
+    transform: none;
+  }
+}
